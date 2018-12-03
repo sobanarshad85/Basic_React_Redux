@@ -8,7 +8,9 @@
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import store from './store/index';
+import { createStore } from 'redux'
+import CounterApp from './src/CounterApp'
+import { Provider } from 'react-redux'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,17 +19,31 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+const initialState = {
+  counter: 0
+}
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'INCREASE_COUNTER':
+      return { counter: state.counter + 1 }
+    case 'DECREASE_COUNTER':
+      return { counter: state.counter - 1 }
+
+  }
+  return state
+}
+
+const store = createStore(reducer)
+
 type Props = {};
 export default class App extends Component<Props> {
 
-  
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native! {store.getState().tech}</Text>
-        
-      </View>
+      <Provider store={store}>
+        <CounterApp />
+      </Provider>
     );
   }
 }
