@@ -38,6 +38,13 @@ const store = createStore(reducer)
 type Props = {};
 export default class App extends Component<Props> {
 
+  //Developed by Soban Arshad
+  //sobanarshad85@gmail.com
+  //+92 303 4645 060
+  //https://www.facebook.com/sobanarshad85
+  //https://www.twitter.com/sobanarshad85
+  //https://www.github.com/sobanarshad85
+  //https://www.linkedin.com/in/sobanarshad85
 
   render() {
     return (
